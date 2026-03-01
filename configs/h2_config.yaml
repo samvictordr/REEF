@@ -1,0 +1,189 @@
+# H2 Experiment Configuration: Use Groups with XAI Inference
+#
+# This config controls the H2 experiment where missing omic blocks
+# are replaced with Domain-aware inferred latent representations.
+#
+# Dataset: Williams et al. (2021) - Montipora capitata thermal stress
+# DOI: 10.7717/peerj.12335
+
+# Random seed for reproducibility
+seed: 42
+
+# Data configuration
+data:
+  # Path to processed TSV matrices (output from extract_excel.py)
+  processed_dir: "data/processed"
+  
+  # Expected omic types (names should match TSV filenames)
+  omics:
+    - proteomics
+    - metabolomics
+    - transcriptomics
+    - microbiome
+  
+  # Label column for classification task (bleaching status)
+  label_column: "bleaching_status"
+  
+  # Secondary task: color score regression (optional)
+  secondary_label: "color_score"
+
+# Strategies to compare (comment out to skip)
+strategies:
+  - complete_case      # Only samples with all omics (baseline)
+  - zero_imputation    # Replace missing with zeros
+  - mean_imputation    # Replace missing with global mean  
+  - mosaic_mask        # Use availability masks (model handles missing)
+  - xai_inferred       # Domain-aware proxy for missing omics (main contribution)
+
+# XAI configuration for missing omic inference
+xai:
+  # Latent dimension for inferred representations
+  latent_dim: 64
+  
+  # Surrogate model type: lightgbm, random_forest, or mlp
+  surrogate_type: "lightgbm"
+  
+  # Domain saliency aggregation method: mean_abs, sum, pca, bins, grouped
+  aggregation_method: "mean_abs"
+  
+  # LightGBM hyperparameters
+  lightgbm:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+    subsample: 0.8
+    colsample_bytree: 0.8
+    random_state: 42
+  
+  # Random Forest hyperparameters
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    min_samples_leaf: 5
+    random_state: 42
+  
+  # MLP hyperparameters (for domain-aware saliency)
+  mlp:
+    hidden_dims: [128, 64]
+    dropout: 0.3
+    n_epochs: 50
+    learning_rate: 0.001
+
+# Model architecture
+model:
+  # Encoder hidden dimension (per-omic MLP)
+  encoder_hidden_dim: 128
+  
+  # Omic embedding dimension (output of each encoder)
+  embedding_dim: 64
+  
+  # Fusion MLP hidden dimension
+  fusion_hidden_dim: 128
+  
+  # Dropout rate
+  dropout: 0.3
+
+# Training configuration
+training:
+  # Number of epochs
+  n_epochs: 100
+  
+  # Batch size
+  batch_size: 32
+  
+  # Learning rate
+  learning_rate: 0.001
+  
+  # Learning rate scheduler
+  scheduler:
+    type: "cosine"  # cosine, step, plateau
+    T_max: 100
+    eta_min: 0.00001
+  
+  # Early stopping
+  early_stopping:
+    patience: 10
+    min_delta: 0.001
+    monitor: "val_auroc"
+  
+  # Weight decay (L2 regularization)
+  weight_decay: 0.0001
+  
+  # Gradient clipping
+  clip_grad_norm: 1.0
+
+# Cross-validation settings
+cv:
+  n_folds: 5
+  stratified: true
+  shuffle: true
+
+# NVFlare VFL settings (for federated variant)
+nvflare:
+  enabled: false
+  
+  # Clients - each holds a subset of omics
+  clients:
+    - name: "client_proteomics"
+      omics: ["proteomics"]
+    - name: "client_metabolomics"
+      omics: ["metabolomics"]
+    - name: "client_transcriptomics"
+      omics: ["transcriptomics"]
+    - name: "client_microbiome"
+      omics: ["microbiome"]
+  
+  # Server aggregation
+  server:
+    # Whether server can receive inferred representations
+    accept_inferred: true
+    aggregation: "fedavg"
+    num_rounds: 50
+
+# Evaluation metrics
+evaluation:
+  # Primary metrics
+  primary: "auroc"
+  
+  # All metrics to compute
+  metrics:
+    - auroc
+    - auprc
+    - accuracy
+    - f1_score
+    - precision
+    - recall
+    - mcc  # Matthews correlation coefficient
+  
+  # Statistical tests for comparison
+  statistical_tests:
+    test: "wilcoxon"  # wilcoxon, paired_ttest
+    correction: "bonferroni"  # bonferroni, fdr_bh
+    alpha: 0.05
+
+# Output settings
+output:
+  dir: "outputs/h2"
+  
+  # Save options
+  save:
+    models: true
+    predictions: true
+    metrics: true
+    figures: true
+  
+  # Figure settings
+  figures:
+    format: "png"
+    dpi: 300
+
+# Logging settings  
+logging:
+  level: "INFO"
+  file: "outputs/h2/experiment.log"
+
+# Toy mode settings (for quick testing)
+toy:
+  n_samples: 20
+  n_epochs: 10
+  n_folds: 2

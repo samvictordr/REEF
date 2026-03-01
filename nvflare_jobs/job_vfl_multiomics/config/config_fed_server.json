@@ -1,0 +1,39 @@
+{
+    "format_version": 2,
+    "min_clients": 4,
+    "num_rounds": 50,
+    
+    "server": {
+        "heart_beat_timeout": 600
+    },
+    
+    "task_data_filters": [],
+    "task_result_filters": [],
+    
+    "components": [
+        {
+            "id": "model_persistor",
+            "path": "nvflare.app_common.components.model_persistor.ModelPersistor"
+        },
+        {
+            "id": "json_generator",
+            "path": "nvflare.app_common.widgets.intime_model_selector.IntimeModelSelector",
+            "args": {
+                "key_metric": "auroc"
+            }
+        }
+    ],
+    
+    "workflows": [
+        {
+            "id": "vfl_controller",
+            "path": "nvflare.app_common.workflows.splitnn_workflow.SplitNNWorkflow",
+            "args": {
+                "min_clients": 4,
+                "num_rounds": "{num_rounds}",
+                "persistor_id": "model_persistor",
+                "task_name": "train"
+            }
+        }
+    ]
+}

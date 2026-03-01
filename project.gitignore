@@ -1,0 +1,61 @@
+# ============================================================
+# .gitignore — coral-vfl-multiomics/
+# Replace the existing .gitignore in this directory
+# ============================================================
+
+# ── Duplicate figure outputs ────────────────────────────────
+# paper_figures/ duplicates Research paper updated(arXiv)/
+# and contains obsolete fig7/fig8 not in the current paper
+paper_figures/
+
+# outputs/figures/ duplicates outputs/benchmark/ figures
+outputs/figures/
+
+# ── Working audit documents ─────────────────────────────────
+# Audit trail kept locally; not useful to public repo readers
+AUDIT_FINAL_V1.md
+AUDIT_FINAL_V2.md
+AUDIT_REPORT.md
+AUDIT_REPORT_reviewer.md
+AUDIT_REPORT_v2.md
+AUDIT_REPORT_v3.md
+REVIEWER_FEEDBACK_IMPLEMENTATION.md
+FIX_XAI_LEAKAGE.md
+directory_list_namechange_v2.md
+
+# ── Root-level leftover scripts ─────────────────────────────
+# Superseded by scripts/ directory; kept locally just in case
+generate_ablation_figures.py
+generate_fig2_strip.py
+generate_paper_figures.py
+compute_steps.py
+
+# ── Misc run artifacts ──────────────────────────────────────
+benchmark_rerun.lo
+
+# ── Python ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# ── Jupyter ─────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Environment ─────────────────────────────────────────────
+# requirements-env.md is intentionally committed (pinned deps)
+# Do NOT ignore it
+.env
+*.env
+
+# ── OS noise ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Manim (if animation script is ever rerun) ───────────────
+manim/media/

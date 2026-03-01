@@ -1,0 +1,177 @@
+# ============================================================
+# .gitignore — coral-vfl-multiomics/
+# ============================================================
+
+# ── Byte-compiled / optimized / DLL files ───────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ── C extensions ────────────────────────────────────────────
+*.so
+
+# ── Distribution / packaging ────────────────────────────────
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ── PyInstaller ─────────────────────────────────────────────
+*.manifest
+*.spec
+
+# ── Installer logs ──────────────────────────────────────────
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ── Unit test / coverage reports ────────────────────────────
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# ── Translations ────────────────────────────────────────────
+*.mo
+*.pot
+
+# ── Jupyter ─────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+profile_default/
+ipython_config.py
+
+# ── pyenv ───────────────────────────────────────────────────
+.python-version
+
+# ── Environments ────────────────────────────────────────────
+# requirements-env.md is intentionally committed — do NOT ignore it
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.conda/
+
+# ── IDE ─────────────────────────────────────────────────────
+.idea/
+.vscode/
+.spyderproject
+.spyproject
+.ropeproject
+*.swp
+*.swo
+*~
+
+# ── Type checkers ───────────────────────────────────────────
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# ── mkdocs ──────────────────────────────────────────────────
+/site
+
+# ── Data files (large, downloaded separately via download_data.sh) ──
+data/
+!data/.gitkeep
+!data/README.md
+
+# ── Outputs ─────────────────────────────────────────────────
+# IMPORTANT: outputs/benchmark/ and outputs/ablation/ contain
+# the result JSONs that figure scripts read from — keep those.
+outputs/
+!outputs/.gitkeep
+!outputs/benchmark/
+!outputs/benchmark/**
+!outputs/ablation/
+!outputs/ablation/**
+# Exclude duplicate figure outputs (figures live in Research paper updated(arXiv)/)
+outputs/figures/
+
+# ── Duplicate figure outputs ────────────────────────────────
+# paper_figures/ duplicates Research paper updated(arXiv)/
+# and contains obsolete fig7/fig8 not in the current paper
+paper_figures/
+
+# ── NVFlare generated workspace ─────────────────────────────
+nvflare_workspace/
+
+# ── Logs ────────────────────────────────────────────────────
+*.log
+logs/
+benchmark_rerun.lo
+
+# ── Temporary files ─────────────────────────────────────────
+tmp/
+temp/
+*.tmp
+
+# ── OS files ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Secrets ─────────────────────────────────────────────────
+*.key
+*.pem
+secrets.yaml
+credentials.json
+
+# ── Large downloads ─────────────────────────────────────────
+# Raw Zenodo data — reproduced via scripts/download_data.sh
+*.tar.gz
+*.zip
+
+# ── LaTeX build artifacts ───────────────────────────────────
+*.aux
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# ── Working audit documents ─────────────────────────────────
+# Audit trail kept locally; not useful to public repo readers
+AUDIT_FINAL_V1.md
+AUDIT_FINAL_V2.md
+AUDIT_REPORT.md
+AUDIT_REPORT_reviewer.md
+AUDIT_REPORT_v2.md
+AUDIT_REPORT_v3.md
+REVIEWER_FEEDBACK_IMPLEMENTATION.md
+FIX_XAI_LEAKAGE.md
+directory_list_namechange_v2.md
+
+# ── Root-level leftover scripts ─────────────────────────────
+# Superseded by scripts/ directory
+generate_ablation_figures.py
+generate_fig2_strip.py
+generate_paper_figures.py
+compute_steps.py
+
+# ── Manim render outputs ────────────────────────────────────
+manim/media/
+
+# ── Miscellaneous ───────────────────────────────────────────
+README.md

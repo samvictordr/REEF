@@ -1,0 +1,35 @@
+{
+  "training_config": {
+    "train_samples": 7,
+    "batch_size": 8,
+    "steps_per_epoch": 1
+  },
+  "original_config": {
+    "nvflare": {
+      "rounds": 50,
+      "local_epochs": 1,
+      "total_steps": 50
+    },
+    "domain_vfl": {
+      "warmup_rounds": 20,
+      "refinement_rounds": 30,
+      "local_epochs": 1,
+      "total_steps": 50
+    },
+    "laser": {
+      "epochs": 40,
+      "total_steps": 40
+    }
+  },
+  "matched_config": {
+    "target_steps": 50,
+    "nvflare_rounds": 50,
+    "domain_total_rounds": 50,
+    "laser_epochs": 50
+  },
+  "ratios": {
+    "nvflare_laser": 1.0,
+    "domain_laser": 1.0,
+    "budget_matched": true
+  }
+}

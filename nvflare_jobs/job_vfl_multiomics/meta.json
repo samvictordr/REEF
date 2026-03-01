@@ -1,0 +1,28 @@
+{
+    "name": "job_vfl_multiomics",
+    "resource_spec": {
+        "site-A": {
+            "num_of_gpus": 0,
+            "mem_per_gpu_in_GiB": 0
+        },
+        "site-B": {
+            "num_of_gpus": 0,
+            "mem_per_gpu_in_GiB": 0
+        },
+        "site-C": {
+            "num_of_gpus": 0,
+            "mem_per_gpu_in_GiB": 0
+        },
+        "site-D": {
+            "num_of_gpus": 0,
+            "mem_per_gpu_in_GiB": 0
+        }
+    },
+    "deploy_map": {
+        "app_server": ["server"],
+        "app_client_transcriptomics": ["site-A"],
+        "app_client_proteomics": ["site-B"],
+        "app_client_metabolomics": ["site-C"],
+        "app_client_microbiome": ["site-D"]
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "format_version": 2,
+    
+    "executors": [
+        {
+            "tasks": ["train", "validate", "submit_model"],
+            "executor": {
+                "path": "coral_silo_executor.CoralSiloExecutor",
+                "args": {
+                    "lr": 0.001,
+                    "epochs": 1,
+                    "batch_size": 32,
+                    "embedding_dim": 64,
+                    "hidden_dim": 128
+                }
+            }
+        }
+    ],
+    
+    "task_data_filters": [],
+    "task_result_filters": [],
+    
+    "components": [
+        {
+            "id": "data_loader",
+            "path": "coral_data_loader.CoralDataLoader",
+            "args": {
+                "data_root": "/path/to/data"
+            }
+        }
+    ]
+}
