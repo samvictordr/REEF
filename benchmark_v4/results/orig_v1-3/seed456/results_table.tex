@@ -1,0 +1,16 @@
+
+\begin{table}[h]
+\centering
+\caption{Performance comparison of VFL methods on coral multi-omics stress classification (N=13 samples, P=90K features). LASER serves as the general VFL baseline. Results averaged over multiple random seeds.}
+\label{tab:vfl_comparison}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Method} & \textbf{AUROC} & \textbf{Accuracy} & \textbf{vs LASER} & \textbf{p-value} \\
+\midrule
+LASER (Baseline) & 0.452 $\pm$ 0.000 & 0.538 $\pm$ 0.000 & (baseline) & - \\
+NVFlare VFL & 0.381 $\pm$ 0.000 & 0.462 $\pm$ 0.000 & -0.071 & nan \\
+\textbf{REEF} & \textbf{0.810 $\pm$ 0.000} & \textbf{0.769 $\pm$ 0.000} & +0.357 & nan \\
+
+\bottomrule
+\end{tabular}
+\end{table}
