@@ -16,6 +16,7 @@ v4 supersedes v1–3. The checkpoint-selection bug behind the v1–3 results is 
 
 | File | Purpose |
 |---|---|
+| `pilot_v1.py` | First harness revision, used for the LOOCV run (`results/loocv.jsonl`). |
 | `pilot_v2.py` | Main harness. Arms `vfl_full`, `reef`, `reef_equal`, `reef_random`, `equal_random`, `equal_ttest`, `laser_full`, `laser_reefsel`, `enet`; schemes `loocv` and `rskf3`. The elastic net is fitted for seed 0 only, since it is deterministic. |
 | `pilot_v3.py` | `pilot_v2.py` plus the LASER mask arms (`laser_salQ`, `laser_rndE`, `laser_rndQ`, `laser_ttQ`), label permutations (`--permutations`) and sensitivity variables `PILOT_ROUNDS`, `PILOT_LASER_LR` and `PILOT_EXCLUDE`. |
 | `posthoc_laser.py` | Adds the LASER mask arms to an existing run, using the stored saliency masks. |
@@ -43,8 +44,21 @@ python figures.py
 
 The LOOCV run used the first harness revision, which differs from `pilot_v2.py` only in fitting the elastic net for every seed rather than seed 0.
 
-## Per-sample predictions
+## Per-sample predictions (`results/`)
 
 Each run writes one JSON line per (scheme, seed, split, fold) task.
 Each line holds the fold assignment, the test labels, every arm's per-sample test probabilities and, for selection arms, the selected feature indices.
-The prediction files (`loocv*.jsonl`, `rskf3*.jsonl`, `perm.jsonl`, `sens_*.jsonl`, `excl2.jsonl`) will be added to `benchmark_v4/results/`.
+
+| File | Contents |
+|---|---|
+| `loocv.jsonl`, `loocv_laser.jsonl` | Pooled LOOCV, 20 seeds (Table 2, Table 3, Fig 1 and Fig 2B) |
+| `rskf3.jsonl`, `rskf3_laser.jsonl` | Repeated stratified 3-fold, 10 partitions x 10 seeds (Table 2, Fig 2A and Fig 3) |
+| `perm.jsonl` | 100 label permutations (Fig 4) |
+| `sens_r20.jsonl`, `sens_r100.jsonl` | 20 and 100 optimiser steps (Fig 5A; 50 steps is `loocv.jsonl`) |
+| `sens_laserlr1e-4.jsonl` | LASER-VFL at learning rate 1e-4 (Fig 5B) |
+| `excl2.jsonl` | Two possibly mislabelled samples excluded |
+| `*.log` | Run logs |
+| `summary.json` | Numbers behind the figures, written by `figures.py` |
+| `orig_v1-3/` | Unchanged original code (`benchmarks/run_comprehensive_benchmark.py`), 5 seeds: logs and outputs behind the v1–3 reproduction (Fig 1, grey) |
+
+To recompute the statistics, run `python ../analyze.py loocv.jsonl+loocv_laser.jsonl rskf3.jsonl+rskf3_laser.jsonl` from `results/`.

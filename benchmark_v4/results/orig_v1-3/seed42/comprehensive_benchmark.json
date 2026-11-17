@@ -1,0 +1,397 @@
+{
+  "timestamp": "2026-11-10T11:36:57.840969",
+  "config": {
+    "seeds": [
+      42
+    ],
+    "n_rounds": 50,
+    "laser_epochs": 50,
+    "topk": 500,
+    "cv_mode": "loocv"
+  },
+  "methods": {
+    "nvflare_vfl": {
+      "results": [
+        {
+          "method": "nvflare_vfl",
+          "cv_mode": "loocv",
+          "seed": 42,
+          "test_auroc": 0.38095238095238093,
+          "test_accuracy": 0.3076923076923077,
+          "test_f1": 0.3076923076923077,
+          "n_folds": 13,
+          "train_time": 74.873109,
+          "fold_metrics": [
+            {
+              "fold": 0,
+              "prediction": 0.5131046772003174,
+              "label": 0
+            },
+            {
+              "fold": 1,
+              "prediction": 0.5190604329109192,
+              "label": 0
+            },
+            {
+              "fold": 2,
+              "prediction": 0.513939619064331,
+              "label": 0
+            },
+            {
+              "fold": 3,
+              "prediction": 0.47036975622177124,
+              "label": 1
+            },
+            {
+              "fold": 4,
+              "prediction": 0.5449731945991516,
+              "label": 1
+            },
+            {
+              "fold": 5,
+              "prediction": 0.49419307708740234,
+              "label": 0
+            },
+            {
+              "fold": 6,
+              "prediction": 0.5120765566825867,
+              "label": 0
+            },
+            {
+              "fold": 7,
+              "prediction": 0.46348869800567627,
+              "label": 1
+            },
+            {
+              "fold": 8,
+              "prediction": 0.5289512276649475,
+              "label": 1
+            },
+            {
+              "fold": 9,
+              "prediction": 0.49300307035446167,
+              "label": 0
+            },
+            {
+              "fold": 10,
+              "prediction": 0.5174641609191895,
+              "label": 0
+            },
+            {
+              "fold": 11,
+              "prediction": 0.4953291416168213,
+              "label": 1
+            },
+            {
+              "fold": 12,
+              "prediction": 0.47408199310302734,
+              "label": 1
+            }
+          ]
+        }
+      ],
+      "aurocs": [
+        0.38095238095238093
+      ],
+      "accuracies": [
+        0.3076923076923077
+      ],
+      "statistics": {
+        "auroc": {
+          "mean": 0.38095238095238093,
+          "std": 0.0,
+          "min": 0.38095238095238093,
+          "max": 0.38095238095238093,
+          "ci_95": [
+            null,
+            null
+          ]
+        },
+        "accuracy": {
+          "mean": 0.3076923076923077,
+          "std": 0.0
+        },
+        "n_successful": 1
+      }
+    },
+    "reef": {
+      "results": [
+        {
+          "method": "reef",
+          "cv_mode": "loocv",
+          "seed": 42,
+          "test_auroc": 0.8571428571428571,
+          "test_accuracy": 0.7692307692307693,
+          "test_f1": 0.7692307692307693,
+          "n_folds": 13,
+          "train_time": 202.29044,
+          "avg_features_selected": 1300.0,
+          "fold_metrics": [
+            {
+              "fold": 0,
+              "prediction": 0.3535228967666626,
+              "label": 0,
+              "features_selected": 1300
+            },
+            {
+              "fold": 1,
+              "prediction": 0.317544162273407,
+              "label": 0,
+              "features_selected": 1300
+            },
+            {
+              "fold": 2,
+              "prediction": 0.3307684659957886,
+              "label": 0,
+              "features_selected": 1300
+            },
+            {
+              "fold": 3,
+              "prediction": 0.7193682789802551,
+              "label": 1,
+              "features_selected": 1300
+            },
+            {
+              "fold": 4,
+              "prediction": 0.6891335248947144,
+              "label": 1,
+              "features_selected": 1300
+            },
+            {
+              "fold": 5,
+              "prediction": 0.6427326202392578,
+              "label": 0,
+              "features_selected": 1300
+            },
+            {
+              "fold": 6,
+              "prediction": 0.5796087384223938,
+              "label": 0,
+              "features_selected": 1300
+            },
+            {
+              "fold": 7,
+              "prediction": 0.615955114364624,
+              "label": 1,
+              "features_selected": 1300
+            },
+            {
+              "fold": 8,
+              "prediction": 0.6821160912513733,
+              "label": 1,
+              "features_selected": 1300
+            },
+            {
+              "fold": 9,
+              "prediction": 0.3111477792263031,
+              "label": 0,
+              "features_selected": 1300
+            },
+            {
+              "fold": 10,
+              "prediction": 0.301312118768692,
+              "label": 0,
+              "features_selected": 1300
+            },
+            {
+              "fold": 11,
+              "prediction": 0.672514021396637,
+              "label": 1,
+              "features_selected": 1300
+            },
+            {
+              "fold": 12,
+              "prediction": 0.3173445165157318,
+              "label": 1,
+              "features_selected": 1300
+            }
+          ]
+        }
+      ],
+      "aurocs": [
+        0.8571428571428571
+      ],
+      "accuracies": [
+        0.7692307692307693
+      ],
+      "statistics": {
+        "auroc": {
+          "mean": 0.8571428571428571,
+          "std": 0.0,
+          "min": 0.8571428571428571,
+          "max": 0.8571428571428571,
+          "ci_95": [
+            null,
+            null
+          ]
+        },
+        "accuracy": {
+          "mean": 0.7692307692307693,
+          "std": 0.0
+        },
+        "n_successful": 1
+      }
+    },
+    "laser": {
+      "results": [
+        {
+          "method": "laser",
+          "cv_mode": "loocv",
+          "seed": 42,
+          "test_auroc": 0.23809523809523814,
+          "test_accuracy": 0.38461538461538464,
+          "test_f1": 0.3333333333333333,
+          "n_folds": 13,
+          "train_time": 47.079004,
+          "fold_metrics": [
+            {
+              "fold": 0,
+              "prediction": 0.07961723208427429,
+              "label": 0
+            },
+            {
+              "fold": 1,
+              "prediction": 0.6458785533905029,
+              "label": 1
+            },
+            {
+              "fold": 2,
+              "prediction": 0.3005453646183014,
+              "label": 1
+            },
+            {
+              "fold": 3,
+              "prediction": 0.7163772583007812,
+              "label": 0
+            },
+            {
+              "fold": 4,
+              "prediction": 0.8031215071678162,
+              "label": 0
+            },
+            {
+              "fold": 5,
+              "prediction": 0.14388106763362885,
+              "label": 1
+            },
+            {
+              "fold": 6,
+              "prediction": 0.5491894483566284,
+              "label": 1
+            },
+            {
+              "fold": 7,
+              "prediction": 0.7646804451942444,
+              "label": 0
+            },
+            {
+              "fold": 8,
+              "prediction": 0.3370038866996765,
+              "label": 0
+            },
+            {
+              "fold": 9,
+              "prediction": 0.4574628472328186,
+              "label": 1
+            },
+            {
+              "fold": 10,
+              "prediction": 0.07204462587833405,
+              "label": 1
+            },
+            {
+              "fold": 11,
+              "prediction": 0.8244635462760925,
+              "label": 0
+            },
+            {
+              "fold": 12,
+              "prediction": 0.49246522784233093,
+              "label": 0
+            }
+          ]
+        }
+      ],
+      "aurocs": [
+        0.23809523809523814
+      ],
+      "accuracies": [
+        0.38461538461538464
+      ],
+      "statistics": {
+        "auroc": {
+          "mean": 0.23809523809523814,
+          "std": 0.0,
+          "min": 0.23809523809523814,
+          "max": 0.23809523809523814,
+          "ci_95": [
+            null,
+            null
+          ]
+        },
+        "accuracy": {
+          "mean": 0.38461538461538464,
+          "std": 0.0
+        },
+        "n_successful": 1
+      }
+    }
+  },
+  "statistical_tests": {
+    "reef_vs_nvflare_vfl": {
+      "comparison": "reef vs nvflare_vfl",
+      "mean_diff": 0.47619047619047616,
+      "paired_ttest": {
+        "statistic": null,
+        "p_value": null
+      },
+      "wilcoxon": {
+        "statistic": 0.0,
+        "p_value": 1.0
+      },
+      "cohens_d": 4761904761.904761,
+      "effect_interpretation": "large",
+      "significant_005": false,
+      "significant_001": false
+    },
+    "reef_vs_laser": {
+      "comparison": "reef vs laser",
+      "mean_diff": 0.619047619047619,
+      "paired_ttest": {
+        "statistic": null,
+        "p_value": null
+      },
+      "wilcoxon": {
+        "statistic": 0.0,
+        "p_value": 1.0
+      },
+      "cohens_d": 6190476190.47619,
+      "effect_interpretation": "large",
+      "significant_005": false,
+      "significant_001": false
+    },
+    "nvflare_vfl_vs_laser": {
+      "comparison": "nvflare_vfl vs laser",
+      "mean_diff": 0.1428571428571428,
+      "paired_ttest": {
+        "statistic": null,
+        "p_value": null
+      },
+      "wilcoxon": {
+        "statistic": 0.0,
+        "p_value": 1.0
+      },
+      "cohens_d": 1428571428.5714278,
+      "effect_interpretation": "large",
+      "significant_005": false,
+      "significant_001": false
+    }
+  },
+  "summary": {
+    "best_method": "REEF",
+    "best_auroc": 0.8571428571428571,
+    "reef_improvement_over_base": 0.47619047619047616,
+    "reef_improvement_over_laser": 0.619047619047619,
+    "reef_advantage": 0.38095238095238093
+  }
+}
